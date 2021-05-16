@@ -137,7 +137,7 @@ export function isValidBoard(
         const letters = [];
         let offset = 0;
         while (true) {
-          const piece = board[y + offset][x]?.letter;
+          const piece = board[y + offset]?.[x]?.letter;
           if (piece === undefined) {
             break;
           } else {
@@ -162,15 +162,15 @@ export function applyMoves(
 ): Board | null {
   const newBoard = game.board.map((row) => [...row]);
   for (const {
-    piece,
+    letter,
     position: [x, y],
   } of moves) {
     if (game.board[y][x] !== undefined) {
       return null;
     }
     newBoard[y][x] = {
-      player: player,
-      letter: game.players[player].hand[piece],
+      player,
+      letter,
     };
   }
   return newBoard;

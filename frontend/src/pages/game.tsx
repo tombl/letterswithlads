@@ -237,7 +237,10 @@ export default function Game({ id }: { id: string }) {
                             ...moves.slice(0, moveIndex),
                             ...moves.slice(moveIndex + 1),
                           ]);
-                        } else if (selected?.type === "hand") {
+                        } else if (
+                          selected?.type === "hand" &&
+                          game.board[y][x] === undefined
+                        ) {
                           theoreticalMove(selected.index, x, y);
                         } else if (
                           selected?.type === "board" &&

@@ -154,6 +154,7 @@ export async function doMove(
   }
 
   game.currentTurn = otherPlayerIndex;
+  game.lastUpdate = Date.now();
 
   broadcast(game.players[otherPlayerIndex].username, "game");
   broadcast(user.username, "game");
