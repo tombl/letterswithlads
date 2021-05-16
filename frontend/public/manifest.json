@@ -1,0 +1,13 @@
+{
+  "short_name": "LwL",
+  "name": "Letters with Lads",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "125x125px",
+      "type": "image/svg"
+    }
+  ]
+}
