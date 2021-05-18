@@ -123,6 +123,7 @@ export async function doMove(
       index,
     }));
     const extraPieces: string[] = [];
+    const newBag = [...game.bag];
 
     for (const { piece, letter } of moves) {
       const handPiece = hand.find(({ index }) => index === piece);
@@ -134,7 +135,7 @@ export async function doMove(
         throw new ClientError("That piece isn't that letter");
       }
       hand = newHand;
-      const replacementPiece = game.bag.pop();
+      const replacementPiece = newBag.pop();
       if (replacementPiece !== undefined) {
         extraPieces.push(replacementPiece);
       }
@@ -151,6 +152,7 @@ export async function doMove(
       ...extraPieces,
     ].sort();
     game.players[otherPlayerIndex].pass = false;
+    game.bag = newBag;
   }
 
   game.currentTurn = otherPlayerIndex;
